@@ -2,12 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 
-const __dirname = import.meta.dirname;
-console.log(__dirname);
+//const __dirname = import.meta.dirname;
+//console.log(__dirname);
 
 
 const app = express();
-const port = 3003;
+const port = process.env.PORT || 3003;
 app.use(cors());
 app.use(express.static('public'));
 
@@ -16,15 +16,15 @@ app.get('/',(req,res) => {
 })
 
 app.get('/otimista', (req,res)=>{
-    res.sendFile(path.join(__dirname,'public/otimista.html'));
+    res.sendFile('/otimista.html');
 })
 
 app.get('/pessimista', (req,res)=>{
-    res.sendFile(path.join(__dirname,'public/pessimista.html'));
+    res.sendFile('/pessimista.html');
 })
 
 app.get('/neutro', (req,res)=>{
-    res.sendFile(path.join(__dirname,'public/neutro.html'));
+    res.sendFile('/neutro.html');
 })
 
 app.listen(port,()=>{
